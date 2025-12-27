@@ -1,3 +1,4 @@
+import pizzas from "./assets/pizzas.json";
 import Categories from "./components/Categories";
 import Header from "./components/Header";
 import PizzaBlock from "./components/PizzaBlock";
@@ -18,9 +19,11 @@ function App() {
 					<h2 className="content__title">Все пиццы</h2>
 
 					<div className="content__items">
-						<PizzaBlock title = 'Meksikana' price = {500} />
-						<PizzaBlock title = 'Banana' price = {350}/>
-
+						{pizzas.map(obj => (
+							<PizzaBlock
+								{...obj}
+							/>
+						))}
 					</div>
 				</div>
 			</div>
