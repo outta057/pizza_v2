@@ -12,7 +12,7 @@ function App() {
 			<div className="content">
 				<div className="container">
 					<div className="content__top">
-						<Categories />
+						{/* <Categories /> */}
 						<Sort />
 					</div>
 
@@ -20,7 +20,8 @@ function App() {
 
 					<div className="content__items">
 						{pizzas.map(obj => (
-							<PizzaBlock
+							<PizzaBlock 
+							key={obj.id}
 								{...obj}
 							/>
 						))}
