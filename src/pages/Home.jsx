@@ -75,11 +75,12 @@ const Home = () => {
 
 			const sort = sortList.find(
 				obj => obj.sortProperty === params.sortProperty,
-			);
+			) || sortList[0];
 
 			dispatch(
 				setFilters({
-					...params,
+					categoryId: Number(params.categoryId),
+					currentPage: Number(params.currentPage),
 					sort,
 				}),
 			);
