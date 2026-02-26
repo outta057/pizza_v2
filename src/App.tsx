@@ -1,5 +1,3 @@
-// import pizzas from "./assets/pizzas.json";
-
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Cart from "./pages/Cart";
