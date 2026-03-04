@@ -42,7 +42,6 @@ const Home: React.FC = () => {
 		const search = searchValue ? `&search=${searchValue}` : "";
 
 		dispatch(
-			// @ts-ignore
 			fetchPizzas({
 				sortBy,
 				order,
