@@ -26,9 +26,9 @@ const Home: React.FC = () => {
 	const { categoryId, sort, currentPage, searchValue } =
 		useSelector(selectorFilter);
 
-	const onChangeCategory = (id: number) => {
-		dispatch(setCategoryId(id));
-	};
+	const onChangeCategory = React.useCallback((id: number) => {
+		dispatch(setCategoryId(id))
+	}, []);
 
 	const onChangePage = (page: number) => {
 		dispatch(setCurrentPage(page));
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
 
 	const pizzas = items.map((obj: any) => (
 		
-			<PizzaBlock {...obj} />
+			<PizzaBlock key={obj.id} {...obj} />
 
 	));
 
@@ -113,9 +113,9 @@ const Home: React.FC = () => {
 			<div className="content__top">
 				<Categories
 					value={categoryId}
-					onChangeCategory={(index: number) => onChangeCategory(index)}
+					onChangeCategory={onChangeCategory}
 				/>
-				<Sort />
+				<Sort value = {sort}/>
 			</div>
 
 			<h2 className="content__title">Все пиццы</h2>
