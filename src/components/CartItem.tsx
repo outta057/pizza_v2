@@ -1,12 +1,13 @@
 import React from "react";
 import {
 	addItem,
-	CartItem,
+	
 	minusItem,
 	removeItem,
-} from "../redux/slices/cartSlice";
+} from "../redux/slices/cart/slice";
 import { useAppDispatch } from "../redux/store";
 import clsx from "clsx";
+import { CartItem } from "../redux/slices/cart/types";
 
 type CartItemProps = {
 	id: string;
