@@ -1,33 +1,34 @@
 import axios from "axios";
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-const FullPizza : React.FC  = () => {
+const FullPizza: React.FC = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const [ pizza, setPizza ] = React.useState<{
-		imageUrl :string
-		title: string
-		price: number
+	const [pizza, setPizza] = React.useState<{
+		imageUrl: string;
+		title: string;
+		price: number;
 	}>();
 
 	React.useEffect(() => {
 		async function fetchPizza() {
 			try {
 				const { data } = await axios.get(
-					`https://69750e05265838bbea969def.mockapi.io/items/` + id );
+					`https://69750e05265838bbea969def.mockapi.io/items/` + id,
+				);
 				setPizza(data);
 			} catch (error) {
-				alert('ОШИБКА ПРИ ПОЛУЧЕНИИ ПИЦЦЫ')
-				navigate('/')
+				alert("ОШИБКА ПРИ ПОЛУЧЕНИИ ПИЦЦЫ");
+				navigate("/");
 			}
 		}
 
-		fetchPizza()
+		fetchPizza();
 	}, []);
 
-	if(!pizza) {
-		return <>"Загрузка..."</>
+	if (!pizza) {
+		return <>"Загрузка..."</>;
 	}
 
 	return (
@@ -35,6 +36,11 @@ const FullPizza : React.FC  = () => {
 			<img src={pizza.imageUrl} />
 			<h2>{pizza.title}</h2>
 			<h4>{pizza.price} </h4>
+			<Link to="/">
+				<button className="button button--outline button--add">
+					<span>Назад</span>
+				</button>
+			</Link>
 		</div>
 	);
 };

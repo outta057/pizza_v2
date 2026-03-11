@@ -2,11 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Categories from "../components/Categories";
-import Pagination from "../components/Pagination";
-import PizzaBlock from "../components/PizzaBlock";
-import Skeleton from "../components/PizzaBlock/Skeleton";
-import Sort from "../components/Sort";
+import { Categories, PizzaBlock, Sort, Skeleton,CartEmpty, CartItem, Pagination, Search, Header, } from "../components";
 
 import { selectorFilter } from "../redux/slices/filter/selectors";
 import { setCategoryId, setCurrentPage } from "../redux/slices/filter/slice";
@@ -19,7 +15,6 @@ const Home: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const isSearch = React.useRef(false);
 	const isMounted = React.useRef(false);
-
 	const { items, status } = useSelector(selectorPizzaData);
 
 	const { categoryId, sort, currentPage, searchValue } =
@@ -27,7 +22,7 @@ const Home: React.FC = () => {
 
 	const onChangeCategory = React.useCallback((id: number) => {
 		dispatch(setCategoryId(id));
-	}, []);
+	}, [dispatch]);
 
 	const onChangePage = (page: number) => {
 		dispatch(setCurrentPage(page));
